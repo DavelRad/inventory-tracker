@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import dynamic from 'next/dynamic'
 import { firestore } from "@/firebase"
 import { Box, Button, Modal, Stack, TextField, Typography, Container, AppBar, Toolbar} from "@mui/material"
@@ -28,7 +28,7 @@ export default function Home() {
     }
   }, [currentUser, router]);
 
-  const updateInventory = async () => {
+  const updateInventory = useCallback(async () => {
     if (!currentUser) return;
 
     const snapshot = query(
@@ -41,7 +41,7 @@ export default function Home() {
     });
     setInventory(inventoryList);
     setFilteredInventory(inventoryList);
-  };
+  }, [currentUser]);
 
   const addItem = async (item) => {
     if (!currentUser) return;
@@ -85,14 +85,14 @@ export default function Home() {
 
   const searchItem = (searchTerm) => {
     if (searchTerm === '') {
-      setFilteredInventory(inventory) // If search term is empty, show all items
+      setFilteredInventory(inventory); // If search term is empty, show all items
     } else {
       const filteredList = inventory.filter(item =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-      setFilteredInventory(filteredList)
+      );
+      setFilteredInventory(filteredList);
     }
-  }
+  };
 
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
