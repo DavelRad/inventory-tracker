@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import React, {useState, useEffect} from 'react'
 import dynamic from 'next/dynamic'
 import { firestore } from "@/firebase"
@@ -113,7 +114,7 @@ export default function Home() {
 
   useEffect(() => {
     updateInventory()
-  },[currentUser])
+  },[currentUser, updateInventory])
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
@@ -163,10 +164,12 @@ export default function Home() {
           </Stack>
           <Box display="flex" alignItems="center" justifyContent="center" flexDirection="column">
             {itemImage && (
-              <img
+              <Image
                 src={itemImage}
                 alt="Captured"
-                style={{ width: 200, height: 200, marginBottom: 16 }}
+                width={200}
+                height={200}
+                style={{ marginBottom: 16 }}
               />
             )}
             <Button variant="contained" onClick={handleAddItem}>
@@ -258,10 +261,12 @@ export default function Home() {
               >
                 <Box display="flex" alignItems="center">
                   {imageUrl && (
-                    <img
+                    <Image
                       src={imageUrl}
                       alt={name}
-                      style={{ width: 50, height: 50, borderRadius: '50%', marginRight: 16 }}
+                      width={50}
+                      height={50}
+                      style={{ borderRadius: '50%', marginRight: 16 }}
                     />
                   )}
                   <Typography variant="h6" sx={{ flexGrow: 1 }}>

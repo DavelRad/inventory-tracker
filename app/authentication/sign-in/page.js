@@ -45,7 +45,7 @@ export default function SignIn() {
           Sign In
         </Button>
         <Typography variant="body2" sx={{ mt: 2 }}>
-          Don't have an account? <Link href="/authentication/sign-up">Create an account</Link>
+          Don&apos;t have an account? <Link href="/authentication/sign-up">Create an account</Link>
         </Typography>
       </Box>
     </Container>
