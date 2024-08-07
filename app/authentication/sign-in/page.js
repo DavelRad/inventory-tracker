@@ -1,9 +1,10 @@
-"use client";
+'use client'
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { Box, Button, TextField, Typography, Container, Link } from '@mui/material';
+import { Box, Button, TextField, Typography, Container, Link, Paper, InputAdornment } from '@mui/material';
+import { Email, Lock } from '@mui/icons-material';
 import { auth } from '@/firebase';
 
 export default function SignIn() {
@@ -22,31 +23,77 @@ export default function SignIn() {
   };
 
   return (
-    <Container maxWidth="sm">
-      <Box mt={8} display="flex" flexDirection="column" alignItems="center">
-        <Typography variant="h4">Sign In</Typography>
-        {error && <Typography color="error">{error}</Typography>}
-        <TextField
-          margin="normal"
-          fullWidth
-          label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <TextField
-          margin="normal"
-          fullWidth
-          label="Password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button variant="contained" color="primary" onClick={handleSignIn} sx={{ mt: 2 }}>
-          Sign In
-        </Button>
-        <Typography variant="body2" sx={{ mt: 2 }}>
-          Don&apos;t have an account? <Link href="/authentication/sign-up">Create an account</Link>
-        </Typography>
+    <Container component="main" maxWidth="xs">
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Paper elevation={3} sx={{ padding: 4, width: '100%' }}>
+          <Typography component="h1" variant="h4" align="center" gutterBottom>
+            Sign In
+          </Typography>
+          {error && (
+            <Typography color="error" align="center" gutterBottom>
+              {error}
+            </Typography>
+          )}
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Email />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <Lock />
+                </InputAdornment>
+              ),
+            }}
+          />
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2 }}
+            onClick={handleSignIn}
+          >
+            Sign In
+          </Button>
+          <Typography variant="body2" align="center">
+            Don't have an account?{' '}
+            <Link href="/authentication/sign-up" variant="body2">
+              {"Sign Up"}
+            </Link>
+          </Typography>
+        </Paper>
       </Box>
     </Container>
   );
