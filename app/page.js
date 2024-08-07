@@ -165,37 +165,47 @@ export default function Home() {
                   Inventory Items
                 </Typography>
                 <Box sx={{ maxHeight: 500, overflow: 'auto', pr: 2 }}>
-                  {filteredInventory.map(({ name, quantity, imageUrl }) => (
-                    <Fade in={true} timeout={500} key={name}>
-                      <Paper elevation={2} sx={{ p: 3, mb: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderRadius: 3, transition: 'all 0.3s ease-in-out', '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 } }}>
-                        <Box display="flex" alignItems="center">
-                          {imageUrl && (
-                            <Image
-                              src={imageUrl}
-                              alt={name}
-                              width={60}
-                              height={60}
-                              style={{ borderRadius: '50%', marginRight: 20, objectFit: 'cover' }}
-                            />
-                          )}
-                          <Typography variant="h6" sx={{ fontWeight: 'medium' }}>
-                            {name.charAt(0).toUpperCase() + name.slice(1)}
-                          </Typography>
-                        </Box>
-                        <Typography variant="h6" sx={{ fontWeight: 'medium', color: 'primary.main' }}>
-                          Quantity: {quantity}
-                        </Typography>
-                        <Box>
-                          <IconButton onClick={() => addItem({ name })} color="primary" sx={{ mr: 1 }}>
-                            <Add />
-                          </IconButton>
-                          <IconButton onClick={() => removeItem(name)} color="secondary">
-                            <Remove />
-                          </IconButton>
-                        </Box>
-                      </Paper>
-                    </Fade>
-                  ))}
+                {filteredInventory.map(({ name, quantity, imageUrl }) => (
+                <Paper 
+                  elevation={2} 
+                  sx={{ 
+                    p: 2, 
+                    mb: 2, 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'space-between',
+                    borderRadius: 2,
+                    backgroundColor: 'background.paper',
+                  }}
+                  key={name}
+                >
+                  <Box display="flex" alignItems="center" flex={1}>
+                    {imageUrl && (
+                      <Image
+                        src={imageUrl}
+                        alt={name}
+                        width={40}
+                        height={40}
+                        style={{ borderRadius: '50%', marginRight: 16, objectFit: 'cover' }}
+                      />
+                    )}
+                    <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
+                      {name.charAt(0).toUpperCase() + name.slice(1)}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body1" sx={{ color: 'primary.main', flex: 1, textAlign: 'center' }}>
+                    Quantity: {quantity}
+                  </Typography>
+                  <Box>
+                    <IconButton onClick={() => addItem({ name })} color="primary" size="small">
+                      <Add />
+                    </IconButton>
+                    <IconButton onClick={() => removeItem(name)} color="error" size="small">
+                      <Remove />
+                    </IconButton>
+                  </Box>
+                </Paper>
+              ))}
                 </Box>
               </Grid>
             </Grid>
