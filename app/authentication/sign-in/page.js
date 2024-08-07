@@ -90,7 +90,7 @@ export default function SignIn() {
           <Typography variant="body2" align="center">
             Don&apos;t have an account?{' '}
             <Link href="/authentication/sign-up" variant="body2">
-              {"Sign Up"}
+              Sign Up
             </Link>
           </Typography>
         </Paper>
