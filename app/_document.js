@@ -1,17 +1,26 @@
 // app/_document.js
-import { Html, Head, Main, NextScript } from 'next/document';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { poppins } from './fonts'; // Adjust the path if necessary
 
-export default function Document() {
-  return (
-    <Html lang="en" className={poppins.className}>
-      <Head>
-        {/* Other head tags */}
-      </Head>
-      <body>
-        <Main />
-        <NextScript />
-      </body>
-    </Html>
-  );
+class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const initialProps = await Document.getInitialProps(ctx);
+    return { ...initialProps };
+  }
+
+  render() {
+    return (
+      <Html lang="en" className={poppins.className}>
+        <Head>
+          {/* Add any other head tags here */}
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
 }
+
+export default MyDocument;

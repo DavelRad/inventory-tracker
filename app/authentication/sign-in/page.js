@@ -88,7 +88,7 @@ export default function SignIn() {
             Sign In
           </Button>
           <Typography variant="body2" align="center">
-            Don&apos;t have an account?{' '}
+            Don&apos;t have an account?&nbsp;
             <Link href="/authentication/sign-up" variant="body2">
               Sign Up
             </Link>
