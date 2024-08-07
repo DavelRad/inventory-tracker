@@ -26,40 +26,25 @@ Check out the live demo[ here](https://inventory-tracker-psi-ruby.vercel.app/).
 
 To run the app locally, follow these steps:
 
-**Clone the repository**: \
-bash \
-Copy code \
-`git clone https://github.com/your-username/inventory-management-app.git`
 
 
-```
-cd inventory-management-app
+1. **Clone the repository**: \
+    ```
+    git clone https://github.com/your-username/inventory-management-app.git
+    cd inventory-management-app
+    ```
 
-```
 
-
-
-1. 
-
-**Install dependencies**: \
-bash \
-Copy code \
+2. **Install dependencies**: \
 `npm install`
-
-
-
-2. 
 3. **Set up Firebase**:
     * Create a Firebase project in the Firebase Console.
     * Add a web app to your Firebase project and copy the Firebase config object.
 
-Create a `.env.local` file in the root directory of your project and add your Firebase config: \
-env \
-Copy code \
-`NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key`
-
+Create a `.env.local` file in the root directory of your project and add your Firebase config: 
 
 ```
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-auth-domain
 NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
 NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-storage-bucket
@@ -70,16 +55,10 @@ NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
 
 
 
-    * 
-
-**Run the app**: \
-bash \
-Copy code \
+4. **Run the app**: 
 `npm run dev`
 
-
-
-4. The app will be available at http://localhost:3000.
+The app will be available at http://localhost:3000.
 
 
 ## **Usage**
@@ -108,33 +87,12 @@ Contributions are welcome! Please follow these steps to contribute:
 
 
 1. Fork the repository.
-
-Create a new branch. \
-bash \
-Copy code \
+2. Create a new branch. 
 `git checkout -b feature-branch`
-
-
-
-2. 
-
-Make your changes and commit them. \
-bash \
-Copy code \
+3. Make your changes and commit them. 
 `git commit -m "Description of changes"`
-
-
-
-3. 
-
-Push to your forked repository. \
-bash \
-Copy code \
+4. Push to your forked repository. 
 `git push origin feature-branch`
-
-
-
-4. 
 5. Create a pull request to the main repository.
 
 
